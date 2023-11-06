@@ -1,3 +1,10 @@
+import {
+  checkInputValue,
+  checkIfUserIsYoungerthan12,
+  checkIfConditionsValid,
+  checkIfCitySelected,
+} from "./functions.js";
+
 // Navbar
 function editNav() {
   var x = document.getElementById("myTopnav");
@@ -9,16 +16,17 @@ function editNav() {
 }
 
 // DOM Elements
+const form = document.querySelector("form");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
 // Reference to the HTML element
-const firstname = document.querySelector("#firstname");
-const lastname = document.querySelector("#lastname");
+const firstname = document.querySelector("#first");
+const lastname = document.querySelector("#last");
 const email = document.querySelector("#email");
 const birthdate = document.querySelector("#birthdate");
-const numberParticipations = document.querySelector("#number_participations");
+const numberParticipations = document.querySelector("#quantity");
 const BtnRadio = document.querySelectorAll("input[name='location']");
 const choiceCheckbox = document.querySelector("#checkbox1");
 
@@ -32,7 +40,7 @@ function launchModal() {
 
 // Message error
 const message = {
-  name: "Minimum 2 caractères, maximum 20 caractères. Les chiffres et caractères spéciaux différents de - ne sont pas autorisés",
+  name: "2 à 20 caractères, pas de chiffres ni de caractères spéciaux, sauf (-)",
   email: "Veuillez renseigner une adresse mail valide.",
   birthdate: "Vous devez avoir plus de 12 ans pour participer",
   numberParticipations: "Veuillez renseigner un nombre entre 0 et 99",
@@ -43,7 +51,7 @@ const message = {
 // Regex
 const regexName = /^([A-Za-z|\s]{2,20})?([-]{0,1})?([A-Za-z|\s]{2,20})$/;
 const regexEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-const regexQuantity = /^([0-9]{1,2})$/;
+const regexnumberParicipations = /^([0-9]{1,2})$/;
 
 //Validate input using an event listener
 firstname.addEventListener("input", () =>
@@ -55,3 +63,61 @@ lastname.addEventListener("input", () =>
 email.addEventListener("input", () =>
   checkInputValue(regexEmail, email, message, email)
 );
+birthdate.addEventListener("input", () =>
+  checkIfUserIsYoungerthan12(birthdate, message.birthdate)
+);
+numberParticipations.addEventListener("input", () =>
+  checkInputValue(
+    regexnumberParicipations,
+    numberParticipations,
+    message.numberParticipations
+  )
+);
+BtnRadio.forEach((radio) =>
+  radio.addEventListener("change", () =>
+    checkIfCitySelected(BtnRadio, message.city)
+  )
+);
+choiceCheckbox.addEventListener("input", () =>
+  checkIfConditionsValid(choiceCheckbox, message.conditions)
+);
+
+// function to validate form
+
+function validate(e) {
+  e.preventDefault();
+
+  // Validation of all valid data
+  const isFirstnameValid = checkInputValue(regexName, firstname, message.name);
+  const isLastnameValid = checkInputValue(regexName, lastname, message.name);
+  const isEmailValid = checkInputValue(regexEmail, email, message.email);
+  const isAgeValid = checkIfUserIsYoungerthan12(birthdate, message.birthdate);
+  const isNumberParticipationsValid = checkInputValue(
+    regexnumberParicipations,
+    numberParticipations,
+    message.numberParticipations
+  );
+  const isCitySelected = checkIfCitySelected(BtnRadio, message.city);
+  const isConditionsValid = checkIfConditionsValid(
+    choiceCheckbox,
+    message.conditions
+  );
+
+  // If each conditions are valid
+  if (
+    isFirstnameValid &&
+    isLastnameValid &&
+    isEmailValid &&
+    isAgeValid &&
+    isNumberParticipationsValid &&
+    isCitySelected &&
+    isConditionsValid
+  ) {
+    formWrapper.style.display = "none";
+    modalSuccess.style.display = "flex";
+    form.reset();
+  }
+}
+
+// "In case of valid conditions, the form is submitted
+form.addEventListener("submit", (e) => validate(e));
