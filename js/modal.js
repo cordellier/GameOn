@@ -6,14 +6,14 @@ import {
 } from "./functions.js";
 
 // Navbar
-function editNav() {
-  var x = document.getElementById("myTopnav");
-  if (x.className === "topnav") {
-    x.className += " responsive";
+const x = document.getElementById("myTopnav");
+x.addEventListener("click", () => {
+  if (x.classList.contains("responsive")) {
+    x.classList.remove("responsive");
   } else {
-    x.className = "topnav";
+    x.classList.add("responsive");
   }
-}
+});
 
 // DOM Elements
 const form = document.querySelector("form");
