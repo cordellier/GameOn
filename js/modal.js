@@ -19,6 +19,7 @@ function editNav() {
 const form = document.querySelector("form");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
+const modalClose = document.querySelector(".close");
 const formData = document.querySelectorAll(".formData");
 
 // Reference to the HTML element
@@ -32,6 +33,9 @@ const choiceCheckbox = document.querySelector("#checkbox1");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+modalClose.addEventListener("click", () => {
+  modalbg.style.display = "none";
+});
 
 // launch modal form
 function launchModal() {
@@ -113,7 +117,7 @@ function validate(e) {
     isCitySelected &&
     isConditionsValid
   ) {
-    formWrapper.style.display = "none";
+    modalbg.style.display = "none";
     modalSuccess.style.display = "flex";
     form.reset();
   }
