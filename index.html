@@ -67,7 +67,7 @@
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
             <div class="formData">
               <label for="firstname">Prénom</label><br>
-              <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
+              <input class="text-control" type="text" id="first" name="first" /><br>
             </div>
 
             <div class="formData">
@@ -143,16 +143,12 @@
     </div>
   </main>
   <!-- --Registration successful -->
-  <div class="bground">
+  <div class="bground success-modal" id="success-modal">
     <div class="content">
-      <span class="close"></span>
+      <span class="close" id="close-success-modal"></span>
       <div class="formData" id="modal-success-wrapper">
-        <p>Vous êtes maintenant inscrit!</p>
-        <p>Merci pour votre participation et à très bientôt.</p>
-
-        <button class="btn-submit" id="close-modal-btn" type="button">
-          Fermer
-        </button>
+        <p>Merci pour <br> votre participation</p>
+        <button class="btn-submit" id="close-modal-btn" type="button">Fermer</button>
       </div>
     </div>
   </div>

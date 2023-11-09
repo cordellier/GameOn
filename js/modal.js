@@ -20,7 +20,9 @@ const form = document.querySelector("form");
 const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const modalClose = document.querySelector(".close");
-const formData = document.querySelectorAll(".formData");
+const modalSuccess = document.getElementById("success-modal");
+const closeSuccessModal = document.getElementById("close-success-modal");
+const closeBtn = document.getElementById("close-modal-btn");
 
 // Reference to the HTML element
 const firstname = document.querySelector("#first");
@@ -125,3 +127,10 @@ function validate(e) {
 
 // "In case of valid conditions, the form is submitted
 form.addEventListener("submit", (e) => validate(e));
+
+// Success Modal
+closeSuccessModal.addEventListener(
+  "click",
+  () => (modalSuccess.style.display = "none")
+);
+closeBtn.addEventListener("click", () => (modalSuccess.style.display = "none"));
