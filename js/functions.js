@@ -23,18 +23,9 @@ export function checkInputValue(regex, element, message) {
 //Check if user is older than 18
 export function checkIfUserIsYoungerthan12(element, message) {
   const birthdate = new Date(element.value);
-  let difference = Date.now() - birthdate.getTime();
-  difference = new Date(difference);
-  const userAge = difference.getFullYear() - 1970;
+  const userAge = new Date().getFullYear() - birthdate.getFullYear();
 
-  const currentYear = new Date().getFullYear();
-  const birthYear = birthdate.getFullYear();
-
-  if (
-    birthYear < currentYear - 100 ||
-    birthYear.toString().length !== 4 ||
-    userAge < 12
-  ) {
+  if (userAge < 12) {
     setErrorMessage(element, message);
     return false;
   }
