@@ -4,25 +4,25 @@
 <head>
   <meta charset="utf-8" />
   <title>Reservation</title>
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
 
   <!-- custom css -->
-  <link rel="stylesheet" href="./css/modal.css" />
+  <link rel="stylesheet" href="./css/modal.css"/>
 
   <!-- font -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <!-- Icon -->
-  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=DM+Sans" rel="stylesheet"/>
 
   <!-- flavicon  -->
-  <link rel="icon" type="logo" href="./asset/Flavicon.png" />
+  <link rel="icon" href="./asset/Flavicon.png"/>
 </head>
 
 <body>
   <header class="topnav" id="myTopnav">
     <div class="header-logo">
-      <img alt="logo" src="./asset/Logo.png" width="auto" height="auto" />
+      <img alt="logo" src="./asset/Logo.png"/>
     </div>
     <div class="main-navbar">
       <nav class="list">
@@ -36,7 +36,7 @@
       <a href="javascript:void(0);" class="icon"><i class="fa fa-bars"></i></a>
     </div>
   </header>
-  </div>
+
   <main>
     <div class="hero-section">
       <div class="hero-content">
@@ -66,18 +66,18 @@
         <div class="modal-body">
           <form name="reserve" action="index.html" method="get" onsubmit="return validate();">
             <div class="formData">
-              <label for="firstname">Prénom</label><br>
+              <label id="firstname">Prénom</label><br>
               <input class="text-control" type="text" id="first" name="first" /><br>
             </div>
 
             <div class="formData">
-              <label for="lastname">Nom</label><br>
+              <label id="lastname">Nom</label><br>
               <input class="text-control" type="text" id="last" name="last" /><br>
             </div>
 
             <div class="formData">
-              <label for="email">E-mail</label><br>
-              <input class="text-control" type="email" id="email" name="email" /><br>
+              <label id="email">E-mail</label><br>
+              <input class="text-control" type="email" name="email" /><br>
             </div>
 
             <div class="formData">
@@ -86,7 +86,7 @@
             </div>
 
             <div class="formData">
-              <label for="number_participations">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
+              <label id="number_participations">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
               <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
             </div>
 
@@ -136,13 +136,13 @@
               </label>
               <br>
             </div>
-            <input class="btn-submit" type="submit" class="button" value="C'est parti" />
+            <input class="btn-submit" type="submit" value="C'est parti" />
           </form>
         </div>
       </div>
     </div>
   </main>
-  <!-- --Registration successful -->
+  <!-- Registration successful -->
   <div class="bground success-modal" id="success-modal">
     <div class="content">
       <span class="close" id="close-success-modal"></span>
@@ -151,7 +151,6 @@
         <button class="btn-submit" id="close-modal-btn" type="button">Fermer</button>
       </div>
     </div>
-  </div>
   </div>
   <footer>
     <p class="copyrights">
