@@ -1,7 +1,9 @@
 // Show error message
 export const setErrorMessage = (element, message) => {
+  const errorMessage =
+    message && typeof message === "object" ? message.email : message;
   element.parentElement.setAttribute("data-error-visible", "true");
-  element.parentElement.setAttribute("data-error", message);
+  element.parentElement.setAttribute("data-error", errorMessage);
 };
 
 // Hide error message
