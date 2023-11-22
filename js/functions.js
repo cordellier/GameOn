@@ -76,7 +76,5 @@ export function checkIfCitySelected(cities, message) {
 
   // Si une ville est sélectionnée, masque le message d'erreur
   hideErrorMessage(cities[0]);
-
-  // Retourne true pour indiquer que la validation a réussi
   return true;
 }
