@@ -22,32 +22,22 @@ export function checkInputValue(regex, element, message) {
   return true;
 }
 
-// Fonction pour vérifier si l'utilisateur a moins de 12 ans ou si la date de naissance n'est pas spécifiée
+// Function to check if the user is under 12 or if the date of birth is not specified
 export function checkIfUserIsYoungerthan12(element, message) {
-  // Récupère la date de naissance depuis la valeur de l'élément fourni
   const birthdate = new Date(element.value);
 
-  // Vérifie si la date de naissance est spécifiée
-  if (isNaN(birthdate.getTime())) {
-    // Affiche un message d'erreur et retourne false pour indiquer que la validation a échoué
-    setErrorMessage(element, "Veuillez spécifier une date de naissance.");
-    return false;
-  }
+  // if (isNaN(birthdate.getTime())) {
+  //   setErrorMessage(element, "Veuillez spécifier une date de naissance.");
+  //   return false;
+  // }
 
-  // Calcule l'âge de l'utilisateur en soustrayant l'année de naissance de l'année actuelle
   const userAge = new Date().getFullYear() - birthdate.getFullYear();
-
-  // Si l'âge de l'utilisateur est inférieur à 12 ans
   if (userAge < 12) {
-    // Affiche un message d'erreur et retourne false pour indiquer que la validation a échoué
     setErrorMessage(element, message);
     return false;
   }
 
-  // Si l'âge de l'utilisateur est de 12 ans ou plus, masque le message d'erreur
   hideErrorMessage(element);
-
-  // Retourne true pour indiquer que la validation a réussi
   return true;
 }
 
@@ -61,20 +51,14 @@ export function checkIfConditionsValid(element, message) {
   return true;
 }
 
-// Fonction pour vérifier si une ville est sélectionnée
+// Function to check whether a city is selected
 
 export function checkIfCitySelected(cities, message) {
-  // Convertit la NodeList(cities) en tableau pour utiliser la méthode some
   const isChecked = Array.from(cities).some((radio) => radio.checked);
-
-  // Si aucune ville n'est sélectionnée
   if (!isChecked) {
-    // Affiche un message d'erreur et retourne false pour indiquer que la validation a échoué
     setErrorMessage(cities[0], message);
     return false;
   }
-
-  // Si une ville est sélectionnée, masque le message d'erreur
   hideErrorMessage(cities[0]);
   return true;
 }
