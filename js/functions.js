@@ -26,12 +26,8 @@ export function checkInputValue(regex, element, message) {
 export function checkIfUserIsYoungerthan12(element, message) {
   const birthdate = new Date(element.value);
 
-  // if (isNaN(birthdate.getTime())) {
-  //   setErrorMessage(element, "Veuillez spécifier une date de naissance.");
-  //   return false;
-  // }
-
   const userAge = new Date().getFullYear() - birthdate.getFullYear();
+
   if (userAge < 12) {
     setErrorMessage(element, message);
     return false;
@@ -55,10 +51,12 @@ export function checkIfConditionsValid(element, message) {
 
 export function checkIfCitySelected(cities, message) {
   const isChecked = Array.from(cities).some((radio) => radio.checked);
+
   if (!isChecked) {
     setErrorMessage(cities[0], message);
     return false;
   }
+
   hideErrorMessage(cities[0]);
   return true;
 }
